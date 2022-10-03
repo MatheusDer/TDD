@@ -1,4 +1,6 @@
 ﻿using FluentAssertions;
+using RoomBookingApp.Core.Models;
+using RoomBookingApp.Core.Processors;
 using Xunit;
 
 namespace RoomBookingApp.Core;

@@ -1,12 +1,20 @@
 ﻿using FluentAssertions;
 using RoomBookingApp.Core.Models;
 using RoomBookingApp.Core.Processors;
+using System.Diagnostics;
 using Xunit;
 
 namespace RoomBookingApp.Core;
 
 public class RoomBookingRequestProcessorTest
 {
+    private readonly RoomBookingRequestProcessor _processor;
+
+    public RoomBookingRequestProcessorTest()
+    {
+        _processor = new RoomBookingRequestProcessor();
+    }
+
     [Fact]
     public void BookRoom_ShouldReturnRoomBookingResponseWithRequestValues()
     {
@@ -17,14 +25,19 @@ public class RoomBookingRequestProcessorTest
             Date = new DateTime(2023, 1, 1)
         };
 
-        var processor = new RoomBookingRequestProcessor();
-
-        RoomBookingResult result = processor.BookRoom(bookingRequest);
+        RoomBookingResult result = _processor.BookRoom(bookingRequest);
 
         result.Should().NotBeNull();
 
         result.FullName.Should().Be(bookingRequest.FullName);
         result.Email.Should().Be(bookingRequest.Email);
         result.Date.Should().Be(bookingRequest.Date);
+    }
+
+    [Fact]
+    public void BookRoom_ShouldThrow_WhenNullRequest()
+    {
+        var exception = Assert.Throws<ArgumentNullException>(() => _processor.BookRoom(null));
+        exception.ParamName.Should().Be("bookingRequest");
     }
 }

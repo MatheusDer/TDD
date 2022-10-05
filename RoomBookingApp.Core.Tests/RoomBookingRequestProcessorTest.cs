@@ -2,6 +2,7 @@
 using Moq;
 using RoomBookingApp.Core.DataServices;
 using RoomBookingApp.Core.Domain;
+using RoomBookingApp.Core.Enums;
 using RoomBookingApp.Core.Models;
 using RoomBookingApp.Core.Processors;
 using System.Diagnostics;
@@ -80,5 +81,35 @@ public class RoomBookingRequestProcessorTest
         _processor.BookRoom(_bookingRequest);
 
         _roomBookingServiceMock.Verify(r => r.Save(It.IsAny<RoomBooking>()), Times.Never);
+    }
+
+    [Theory]
+    [InlineData(BookingFlag.Success, true)]
+    [InlineData(BookingFlag.Failure, false)]
+    public void Should_Return_Flag_In_Result(BookingFlag bookingFlag, bool isAvailable)
+    {
+        if (!isAvailable)
+            _availableRooms.Clear();
+
+        var result = _processor.BookRoom(_bookingRequest);
+
+        result.Flag.Should().Be(bookingFlag);
+    }
+
+    [Theory]
+    [InlineData(1, true)]
+    [InlineData(null, false)]
+    public void Should_Return_RoomBookingId_In_Result(int? roomBookingId, bool isAvailable)
+    {
+        if (!isAvailable)
+            _availableRooms.Clear();
+        else
+            _roomBookingServiceMock.Setup(r => r.Save(It.IsAny<RoomBooking>()))
+                .Callback<RoomBooking>((booking) => booking.Id = roomBookingId.Value);
+
+
+        var result = _processor.BookRoom(_bookingRequest);
+
+        result.RoomBookingId.Should().Be(roomBookingId);
     }
 }

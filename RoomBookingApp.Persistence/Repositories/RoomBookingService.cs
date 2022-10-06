@@ -1,5 +1,6 @@
 ﻿using RoomBookingApp.Core.DataServices;
 using RoomBookingApp.Core.Domain;
+using System.Linq;
 
 namespace RoomBookingApp.Persistence.Repositories;
 
@@ -13,9 +14,7 @@ public class RoomBookingService : IRoomBookingService
     }
 
     public IEnumerable<Room> GetAvailableRooms(DateTime date)
-    {
-        throw new NotImplementedException();
-    }
+        => _context.Rooms.Where(r => !r.RoomBookings.Any() || r.RoomBookings.Any(r => r.Date < date)).ToList();
 
     public void Save(RoomBooking roomBooking)
     {

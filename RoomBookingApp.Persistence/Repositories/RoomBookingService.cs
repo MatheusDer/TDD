@@ -18,6 +18,7 @@ public class RoomBookingService : IRoomBookingService
 
     public void Save(RoomBooking roomBooking)
     {
-        throw new NotImplementedException();
+        _context.RoomBookings.Add(roomBooking);
+        _context.SaveChanges();
     }
 }

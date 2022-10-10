@@ -1,8 +1,23 @@
-﻿namespace RoomBookingApp.Core.Models;
+﻿using System.ComponentModel.DataAnnotations;
 
-public abstract class RoomBookingBase
+namespace RoomBookingApp.Core.Models;
+
+public abstract class RoomBookingBase : IValidatableObject
 {
-    public string? FullName { get; set; }
-    public string? Email { get; set; }
+    [Required]
+    [StringLength(80)]
+    public string FullName { get; set; }
+
+    [Required]
+    [StringLength(80)]
+    public string Email { get; set; }
+
+    [DataType(DataType.Date)]
     public DateTime Date { get; set; }
+
+    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+    {
+        if (Date <= DateTime.Now.Date)
+            yield return new ValidationResult("Date must be in the future", new[] { nameof(Date) });
+    }
 }

@@ -8,31 +8,24 @@ namespace RoomBookingApp.Persistence;
 
 public class RoomBookingServiceTests
 {
-    private DbContextOptions<RoomBookingAppDbContext> _dbOptions;
-
-    public RoomBookingServiceTests()
-    {
-        _dbOptions = new DbContextOptionsBuilder<RoomBookingAppDbContext>()
+    private readonly DbContextOptions<RoomBookingAppDbContext> _dbOptions = 
+        new DbContextOptionsBuilder<RoomBookingAppDbContext>()
             .UseInMemoryDatabase("InMem")
             .Options;
-
-        using var context = new RoomBookingAppDbContext(_dbOptions);
-        context.Database.EnsureDeleted();
-    }
 
     [Fact]
     public void Should_Return_Available_Rooms()
     {
         var date = DateTime.Now;
 
-        using var context = new RoomBookingAppDbContext(_dbOptions);
+        using var context = new DatabaseFixture(_dbOptions);
 
         context.Add(new Room { Id = 1, Name = "Room 1" });
         context.Add(new Room { Id = 2, Name = "Room 2" });
         context.Add(new Room { Id = 3, Name = "Room 3" });
 
-        context.Add(new RoomBooking { RoomId = 1, Date = date });
-        context.Add(new RoomBooking { RoomId = 2, Date = date.AddDays(-1) });
+        context.Add(new RoomBooking { RoomId = 1, Date = date, FullName="Test1", Email="test1@email.com" });
+        context.Add(new RoomBooking { RoomId = 2, Date = date.AddDays(-1), FullName = "Test2", Email = "test2@email.com" });
 
         context.SaveChanges();
 
@@ -57,9 +50,7 @@ public class RoomBookingServiceTests
             RoomId = 1,
         };
 
-        using var context = new RoomBookingAppDbContext(_dbOptions);
-
-        context.SaveChanges();
+        using var context = new DatabaseFixture(_dbOptions);
 
         var roomBookingService = new RoomBookingService(context);
 

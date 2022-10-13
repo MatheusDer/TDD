@@ -31,8 +31,8 @@ public class RoomBookingServiceTests
         context.Add(new Room { Id = 2, Name = "Room 2" });
         context.Add(new Room { Id = 3, Name = "Room 3" });
 
-        context.Add(new RoomBooking { RoomId = 1, Date = date });
-        context.Add(new RoomBooking { RoomId = 2, Date = date.AddDays(-1) });
+        context.Add(new RoomBooking { RoomId = 1, Date = date, FullName="", Email="" });
+        context.Add(new RoomBooking { RoomId = 2, Date = date.AddDays(-1), FullName = "", Email = "" });
 
         context.SaveChanges();
 

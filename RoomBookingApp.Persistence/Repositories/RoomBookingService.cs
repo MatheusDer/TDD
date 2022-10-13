@@ -1,6 +1,5 @@
 ﻿using RoomBookingApp.Core.DataServices;
 using RoomBookingApp.Core.Domain;
-using System.Linq;
 
 namespace RoomBookingApp.Persistence.Repositories;
 

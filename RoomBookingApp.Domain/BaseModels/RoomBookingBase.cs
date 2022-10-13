@@ -1,8 +1,15 @@
-﻿namespace RoomBookingApp.Core.Models;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace RoomBookingApp.Core.Models;
 
 public abstract class RoomBookingBase
 {
-    public string? FullName { get; set; }
-    public string? Email { get; set; }
+    [Required]
+    public string FullName { get; set; }
+
+    [Required]
+    public string Email { get; set; }
+
+    [Required]
     public DateTime Date { get; set; }
 }

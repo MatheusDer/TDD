@@ -15,9 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4C417132
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoomBookingApp.Persistence.Tests", "RoomBookingApp.Persistence.Tests\RoomBookingApp.Persistence.Tests.csproj", "{2FE02731-FDBC-4720-8DF5-82CC7DC3626A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomBookingApp.Api", "RoomBookingApp.Api\RoomBookingApp.Api.csproj", "{FA62CDCB-2F45-47C9-85FF-C7EC640FFA73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoomBookingApp.Api", "RoomBookingApp.Api\RoomBookingApp.Api.csproj", "{FA62CDCB-2F45-47C9-85FF-C7EC640FFA73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomBookingApp.Api.Tests", "RoomBookingApp.Api.Tests\RoomBookingApp.Api.Tests.csproj", "{4AC3CB8A-5834-4BD9-BF87-E9F39129EF81}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomBookingApp.Api.IntegrationTests", "RoomBookingApp.Api.IntegrationTests\RoomBookingApp.Api.IntegrationTests.csproj", "{876DEDD9-7696-4618-9D7D-F27F38AAB0ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,10 +49,10 @@ Global
 		{FA62CDCB-2F45-47C9-85FF-C7EC640FFA73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA62CDCB-2F45-47C9-85FF-C7EC640FFA73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA62CDCB-2F45-47C9-85FF-C7EC640FFA73}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4AC3CB8A-5834-4BD9-BF87-E9F39129EF81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4AC3CB8A-5834-4BD9-BF87-E9F39129EF81}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4AC3CB8A-5834-4BD9-BF87-E9F39129EF81}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4AC3CB8A-5834-4BD9-BF87-E9F39129EF81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{876DEDD9-7696-4618-9D7D-F27F38AAB0ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{876DEDD9-7696-4618-9D7D-F27F38AAB0ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{876DEDD9-7696-4618-9D7D-F27F38AAB0ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{876DEDD9-7696-4618-9D7D-F27F38AAB0ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,7 +60,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{03E373B0-97F7-4BE9-9179-9084ABCC94DD} = {4C417132-1A48-4FE2-AD1E-7C920170DED4}
 		{2FE02731-FDBC-4720-8DF5-82CC7DC3626A} = {4C417132-1A48-4FE2-AD1E-7C920170DED4}
-		{4AC3CB8A-5834-4BD9-BF87-E9F39129EF81} = {4C417132-1A48-4FE2-AD1E-7C920170DED4}
+		{876DEDD9-7696-4618-9D7D-F27F38AAB0ED} = {4C417132-1A48-4FE2-AD1E-7C920170DED4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E3267051-E944-4DA2-8FEE-C2C45EFAA48B}
